@@ -1,20 +1,15 @@
 Package: mzh5
 Type: Package
-Title: Wrapper to XCMS to Create a consistent R List Object or HDF5 file 
+Title: Wrapper to XCMS to create a consistent R list object or HDF5 file 
 Version: 0.1.0
 Author: Jeff Jones | SoCal Bioinformatics Inc.
 Maintainer: Jeff Jones <jeff@socalbioinformatics.com>
 Description: Create a logical object to store and access LCMS data, either as an
     RDS object or HDF5 file. Conversion creates a rasterized lcms matrix defined by 
-    the desired fidelity, allowing (using HDF5 format) access to 'hyperslabs' without
+    the desired fidelity, allowing (using HDF5 format) access to ms1-'hyperslabs' without
     loading the entire file. Furthermore, this format preserves the ability to collect
-    profile data without increasing disk-space.
-    Disk space
-    raw instrument vendor .......... 1
-    .mzML .......................... 4x
-    .mz5 ........................... 0.5x
-    .mzh5 .......................... 0.25x
-    .mzh5.rds ...................... 0.25x
+    profile data without increasing disk-space, and in many cases is more efficient then 
+    centroid data.
 License: MIT License. Copyright (c) 2017 Jeff Jones, SoCal Bioinformatics Inc.
 Encoding: UTF-8
 LazyData: true

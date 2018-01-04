@@ -1,7 +1,15 @@
 # mzh5
-Wrapper to XCMS to Create a consistent R List Object or HDF5 file
+##Wrapper to XCMS to Create a consistent R List Object or HDF5 file
 
-Create a logical object to store and access LCMS data, either as an RDS object or HDF5 file. Conversion creates a rasterized lcms matrix defined by the desired fidelity, allowing (using HDF5 format) access to 'hyperslabs' without loading the entire file. Furthermore, this format preserves the ability to collect profile data without increasing disk-space.
+Create a logical object to store and access LCMS data, either as an RDS object or HDF5 file. Conversion creates a rasterized lcms matrix defined by the desired fidelity, allowing (using HDF5 format) access to ms1-'hyperslabs' without loading the entire file. Furthermore, this format preserves the ability to collect profile data without increasing disk-space, and in many cases is more efficient then centroid data.
+
+###Motivation
+
+Current projects aimed at open access data for LCMS are either terribly space inefficient (xml), or a poor attempt at utilizing a innovations in big data (mz5). While there is a clear motivation to adhere to the HUPO Proteomics Standards for data integrity, there are only a few essential data constructs - Measurement Time, Measurement Conditions, and M/Z ~ Intensity. The attempt here is to improve that last construct.
+
+####M/Z ~ Intensity Data Collection
+
+Current data from every instrument manufacture records both m/z and intensity for every scan event - the former being the most redundant. Albeit, some experimenters call for different m/z ranges to be collected, however that shouldn't be the case for data recording. By standardizing the m/z axis of collection, for instance, to 0.01Da intervals for TOF/QQQ/QE proteomics and 0.001Da for FTMS/Orbi proteomics, the m/z axis needs only to be defined once and contains sufficient resolution for complex samples such as plasma. This establishes a _matrix_ of data, which can be further refined by collecting ms1 scan events at regular intervals. Storing this _matrix_ of data in the HDF5 format, is more efficient then the proposed mz5 format, for both read and write operations. In addition, taking advantage of the HDF5 concepts, data can be accessed in part (via an HDF5 hyperslab) without the need to load the entire file into memory. This becomes particularly enticing when dealing with large, multi-experiment datasets.  
 
 ## R list object  
 ```

@@ -2,7 +2,7 @@
 % Please edit documentation in R/precursorIntensity.R
 \name{estPreInt}
 \alias{estPreInt}
-\title{Standardize ms1 data to consistent mz/lc values}
+\title{Estimate the msn precursor ion intenisty of the isolated mz value}
 \usage{
 estPreInt(dat, verbose = T)
 }
@@ -12,7 +12,7 @@ estPreInt(dat, verbose = T)
 \item{obj}{mzh5::readMzML object}
 }
 \description{
-Standardize ms1 data to consistent mz/lc values
+Estimate the msn precursor ion intenisty of the isolated mz value
 }
 \examples{
 dat <- readMzML("example.mzML")

@@ -13,7 +13,8 @@
 #           rasterize the ms1 lcms to "standardize the matrix"
 ################################################################################
 
-library(h5)
+# library h5 not supported for R 3.6+
+# library(h5)
 
 
 #' Save standardize ms1 data to an HDF5 file
